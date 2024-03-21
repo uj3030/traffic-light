@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traffic Lights</title>
+    <link rel="stylesheet" href="index.css" />
+    <style>
+        
+* {
+    margin: 39px;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: rgba(0, 81, 110, 0.777);
+}
+
+.main {
+    margin-top: 40px;
+    text-align: center;
+    /* background-color: rgba(0, 81, 110, 0.777) */
+   
+}
+
+.main h2 {
+    margin-bottom: 25px;
+}
+
+.container {
+    display: flex;
+    justify-content:space-around;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+/* Lights start */
+.lights {
+    display: grid;
+    gap: 35px;
+    background-color: rgb(16, 16, 16);
+    padding: 10px 30px;
+    border-radius: 30px;
+}
+
+.light {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 10px;
+    background-color: #fff;
+}
+/* Lights end */
+
+
+/* Radio button hidden */
+input[type="radio"] {
+    display: none;
+}
+
+/* Light buttons start */
+.button-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.button {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.button-container label {
+    border: 2px solid rgb(30, 30, 30);
+    background-color: rgb(143, 138, 138);
+
+    border-radius: 20px;
+    text-align: center;
+    width: 130px;
+    height: 50px;
+    margin: 3px;
+}
+/* Light buttons end */
+
+
+/* Output of lights checking radio button */
+#red:checked~.lights .red {
+    background-color: red;
+}
+
+#yellow:checked~.lights .yellow {
+    background-color: rgb(241, 231, 91);
+}
+
+#green:checked~.lights .green {
+    background-color: green;
+}
+
+#all:checked~.lights .red {
+    background-color: red;
+}
+
+#all:checked~.lights .yellow {
+    background-color:  rgb(241, 231, 91);
+}
+
+#all:checked~.lights .green {
+    background-color: green;
+}
+
+#reset:checked~.lights .light {
+    background-color: #fff;
+}
+
+/* Output of buttons on checking radio button */
+#red:checked~.button-container label[for="red"] {
+    border: 2px solid red;
+    background-color: red;
+}
+
+#yellow:checked~.button-container label[for="yellow"] {
+    border: 2px solid  rgb(241, 231, 91);
+    background-color:  rgb(241, 231, 91);
+}
+
+
+#green:checked~.button-container label[for="green"] {
+    border: 2px solid green;
+    background-color: green;
+}
+
+
+#all:checked~.button-container label[for="all"] {
+    border: 2px solid gray;
+    background-color: gray;
+}
+
+#all:checked~.button-container label[for="red"] {
+    border: 2px solid red;
+    background-color: red;
+}
+
+#all:checked~.button-container label[for="yellow"] {
+    border: 2px solid  rgb(241, 231, 91);
+    background-color:  rgb(241, 231, 91);
+}
+
+#all:checked~.button-container label[for="green"] {
+    border: 2px solid green;
+    background-color: green;
+}
+
+#reset:checked~.button-container label[for="reset"] {
+    border: 2px solid gray;
+    background-color: gray;
+}
+
+/* Animation for alt button */
+#alt:checked ~ .button-container label[for="alt"] {
+    animation: alt-btn-animation 6s infinite;
+}
+
+@keyframes alt-btn-animation {
+
+    0%,
+    100% {
+        background-color: red;
+        border: 2px solid red;
+    }
+
+    33% {
+        background-color:  rgb(241, 231, 91);
+        border: 2px solid  rgb(241, 231, 91);
+    }
+
+    66% {
+        background-color: green;
+        border: 2px solid green;
+    }
+}
+
+#alt:checked~.lights .red {
+    animation: alt-light1-animation 6s infinite;
+}
+
+@keyframes alt-light1-animation {
+
+    0%,
+    100% {
+        background-color: red;
+    }
+
+    33% {
+        background-color: #fff;
+    }
+
+    66% {
+        background-color: #fff;
+    }
+}
+
+#alt:checked~.lights .yellow {
+    animation: alt-light2-animation 6s infinite;
+}
+
+@keyframes alt-light2-animation {
+    0% {
+        background-color: #fff;
+    }
+
+    33% {
+        background-color:  rgb(241, 231, 91);
+    }
+
+    66%,
+    100% {
+        background-color: #fff;
+    }
+}
+
+#alt:checked~.lights .green {
+    animation: alt-light3-animation 6s infinite;
+}
+
+@keyframes alt-light3-animation {
+
+    0%,
+    33% {
+        background-color: #fff;
+    }
+
+    66% {
+        background-color: green;
+    }
+
+    100% {
+        background-color: #fff;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <!-- <h1>Traffic Light Task (HTML, CSS only)</h1>
+        <h2>Chandanpreet Kaur (Reg. NO. - P28)</h2> -->
+
+        <!-- Radio buttons hidden -->
+        <div class="container">
+
+            <input type="radio" id="red" name="traffic-light">
+            <input type="radio" id="yellow" name="traffic-light">
+            <input type="radio" id="green" name="traffic-light">
+            <input type="radio" id="all" name="traffic-light">
+            <input type="radio" id="alt" name="traffic-light">
+            <input type="radio" id="reset" name="traffic-light">
+
+            <!-- Traffic lights start -->
+            <div class="lights">
+                <div class="light red"></div>
+                <div class="light yellow"></div>
+                <div class="light green"></div>
+            </div>
+            <!-- Traffic lights end -->
+
+            <!-- Light buttons start -->
+            <div class="button-container">
+                <label class="button" for="red">Red</label>
+                <label class="button" for="yellow">Yellow</label>
+                <label class="button" for="green">Green</label>
+                <label class="button" for="all">All</label>
+                <label class="button" for="reset">RESET</label>
+                <label class="button" for="alt">Alt</label>
+            </div>
+            <!-- Light buttons end -->
+        </div>
+    </div>
+
+</body>
+
+</html>
